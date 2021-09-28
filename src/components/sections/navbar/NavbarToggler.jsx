@@ -6,7 +6,7 @@ export default function NavbarToggler({ handleClick }) {
       <button
         type="button"
         onClick={handleClick}
-        className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+        className="text-textPrimary hover:text-gray-600 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
         aria-label="toggle menu"
       >
         <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
