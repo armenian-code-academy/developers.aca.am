@@ -1,9 +1,9 @@
+import Header from '../src/components/sections/Header';
+
 export default function Home() {
   return (
     <div>
-      <div>
-        <span className="text-xl text-green-500">developers</span>
-      </div>
+      <Header />
     </div>
   );
 }
