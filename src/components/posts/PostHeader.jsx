@@ -12,8 +12,6 @@ export default function PostHeader() {
           //   className="w-full h-auto"
           src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80"
           alt="content"
-          width={1000}
-          height={600}
           layout="fill"
           objectFit="cover"
           objectPosition="0"
