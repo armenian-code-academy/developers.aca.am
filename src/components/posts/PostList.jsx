@@ -1,6 +1,6 @@
 import React from 'react';
 import PostComponent from './PostComponent';
-import PostHeader from './PostHeader';
+
 
 export default function PostList() {
   let list = new Array(8).fill('+');
