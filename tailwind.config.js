@@ -16,7 +16,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ['active'],
+      backgroundColor: ['hover', 'focus'],
+      borderColor: ['focus', 'hover'],
+    },
   },
   plugins: [],
 };
