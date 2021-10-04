@@ -5,22 +5,22 @@ import TopSection from '../src/components/sections/TopSection';
 import BottomSection from '../src/components/teams/BottomSection';
 import TeamList from '../src/components/teams/TeamList';
 import Wrapper from '../src/components/wrappers/Wrapper';
-import getDocBySlug from '../src/services/getDocBySlug.js';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import Image from 'next/image';
+import Head from 'next/head';
+import getDocBySlug from '../src/services/getDocBySlug.mjs';
 
-export default function Team({ source, frontMatter }) {
+export default function Team({ meta, content }) {
   return (
     <div>
+      <Head>
+        <title>{meta.title}</title>
+      </Head>
       <Header />
       <Wrapper>
-        <TopSection
-          header="Lorem ipsum"
-          content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius,
-          aliquid."
-        />
-        {/* <MDXRemote {...source} /> */}
+        <TopSection header={meta.header} content={meta.description} />
+        <MDXRemote {...content} />
         <TeamList />
         <BottomSection />
         <Footer />
@@ -30,9 +30,7 @@ export default function Team({ source, frontMatter }) {
 }
 export async function getStaticProps() {
   const { meta, content, slug } = getDocBySlug('team');
-  // console.log(content);
+  console.log(meta, content);
   const mdxSource = await serialize(content);
-
-  // return { props: { meta, content } };
-  return { props: { source: mdxSource, frontMatter: meta } };
+  return { props: { meta, content: mdxSource } };
 }

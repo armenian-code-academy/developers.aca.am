@@ -15,11 +15,7 @@
     "next-mdx-remote": "^3.0.5",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "remark": "^14.0.1",
-    "remark-autolink-headings": "^7.0.1",
-    "remark-code-titles": "^0.1.2",
-    "remark-slug": "^7.0.0"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.6",
