@@ -15,12 +15,12 @@ export default function BlogPost({ meta, content }) {
         <p>{meta.description}</p>
       </div>
       <div className="w-28 h-24">
-        <Image
-          src={require(meta.image)}
+        {/* <Image
+          src={meta.image}
           alt={meta.description}
           objectFit="contain"
           layout="fill"
-        />
+        /> */}
       </div>
       <div>
         <MarkDownWrapper>
@@ -32,11 +32,11 @@ export default function BlogPost({ meta, content }) {
 }
 
 export async function getStaticPaths() {
-  const pathsEn = getDataFromFolders('blog').map(({ slug }) => {
-    return { params: slug };
+  const pathsEn = await getDataFromFolders('blog').map(({ slug }) => {
+    return { params: { slug } };
   });
-  const pathsAm = getDataFromFolders('blog', 'am').map(({ slug }) => {
-    return { params: slug };
+  const pathsAm = await getDataFromFolders('blog', 'am').map(({ slug }) => {
+    return { params: { slug } };
   });
   return {
     paths: [...pathsEn, ...pathsAm],

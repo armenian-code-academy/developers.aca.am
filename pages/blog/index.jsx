@@ -17,7 +17,8 @@ export default function Blog({ blogList }) {
       <Header />
       <Wrapper>
         {blogList?.map(({ data, slug }, index) => {
-          return <BlogComponent key={index} meta={data} />;
+          console.log(data, 'data');
+          return <BlogComponent key={index} meta={data} sourcePath={slug} />;
         })}
         <Footer />
       </Wrapper>
