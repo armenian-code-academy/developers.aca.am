@@ -5,7 +5,7 @@ export default function PostHeader() {
   return (
     <div className="mt-8">
       <div>
-        <h2 className="text-xl text-textLight shadow px-5">Post headers</h2>
+        <h2 className="text-xl text-textLight shadow px-5 py-8">Post headers</h2>
       </div>
       <div className="mt-5  w-full h-96 relative">
         <Image

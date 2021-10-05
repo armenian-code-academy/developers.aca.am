@@ -3,8 +3,7 @@ import React from 'react';
 
 import TeamComponent from './TeamComponent';
 
-export default function TeamList() {
-  let teams = new Array(8).fill('=');
+export default function TeamList({ teamList }) {
   return (
     <div className="my-10">
       <div>
@@ -13,9 +12,9 @@ export default function TeamList() {
         </h2>
       </div>
       <div>
-        {teams.map((_, index) => {
-          if (index % 2) return <TeamComponent key={index} />;
-          return <TeamComponent reverse key={index} />;
+        {teamList?.map(({ data }, index) => {
+          if (index % 2) return <TeamComponent content={data} key={index} />;
+          return <TeamComponent content={data} reverse key={index} />;
         })}
       </div>
     </div>

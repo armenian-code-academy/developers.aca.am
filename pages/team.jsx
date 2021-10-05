@@ -5,33 +5,34 @@ import TopSection from '../src/components/sections/TopSection';
 import BottomSection from '../src/components/teams/BottomSection';
 import TeamList from '../src/components/teams/TeamList';
 import Wrapper from '../src/components/wrappers/Wrapper';
-import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote';
-import Image from 'next/image';
-import Head from 'next/head';
 
-export default function Team({ meta, content }) {
+import Head from 'next/head';
+import { getDataFromFolders } from '../src/services/mdxServices.mjs';
+import { teamFolder } from '../src/constants/folderName.constants';
+
+export default function Team({ teamList }) {
   return (
     <div>
       <Head>
-        <title>{meta.title}</title>
+        <title>ACA Teams</title>
       </Head>
       <Header />
       <Wrapper>
-        <TopSection header={meta.header} content={meta.description} />
-        <MDXRemote {...content} />
-        <TeamList />
+        <TopSection header="Team header" content="some description" />
+        <TeamList teamList={teamList} />
         <BottomSection />
         <Footer />
       </Wrapper>
     </div>
   );
 }
-export async function getStaticProps() {
-  const { meta, content, slug } = getDocBySlug('team');
 
-  const mdxSource = await serialize(content);
-  console.log(mdxSource);
-  console.log(meta);
-  return { props: { meta, content: mdxSource } };
+export async function getStaticProps({ locale }) {
+  const teamList = await getDataFromFolders(teamFolder(), locale);
+
+  return {
+    props: {
+      teamList,
+    },
+  };
 }

@@ -1,22 +1,23 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import { blogPath } from '../../constants/path.constants';
+
 
 export default function BlogComponent({ meta, sourcePath }) {
   return (
-    <div>
-      <Link href={`${blogPath(sourcePath)}`}>
+    <div className="border-b shadow p-5">
+      <Link href={`/blog/${sourcePath}`} passHref>
         <a>
           <div>
-            <h3>{meta.title}</h3>
-            <p>{meta.description}</p>
+            <h3 className="text-xl mb-8 text-textLight">{meta.title}</h3>
+            <p className="text-xs my-2">{meta.description}</p>
           </div>
-          <div className="w-32 h-24 relative">
+          <div className="w-full h-48 relative">
             <Image
-              src={require(meta?.image)}
+              src={require(`../../../public/${meta.image}`)}
               alt={meta.description}
               layout="fill"
+              objectFit="cover"
             />
           </div>
         </a>

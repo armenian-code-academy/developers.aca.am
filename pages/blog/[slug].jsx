@@ -1,6 +1,5 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import React from 'react';
-import { blogPath } from '../../src/constants/router.constants';
 import { getDocBySlug } from '../../src/services/mdxServices.mjs';
 import { getDataFromFolders } from '../../src/services/mdxServices.mjs';
 import Image from 'next/image';
@@ -15,12 +14,12 @@ export default function BlogPost({ meta, content }) {
         <p>{meta.description}</p>
       </div>
       <div className="w-28 h-24">
-        {/* <Image
-          src={meta.image}
+        <Image
+          src={require(`/public/${meta.image}`)}
           alt={meta.description}
           objectFit="contain"
           layout="fill"
-        /> */}
+        />
       </div>
       <div>
         <MarkDownWrapper>
@@ -32,14 +31,12 @@ export default function BlogPost({ meta, content }) {
 }
 
 export async function getStaticPaths() {
-  const pathsEn = await getDataFromFolders('blog').map(({ slug }) => {
-    return { params: { slug } };
+  const paths = await getDataFromFolders('blog').map(({ slug }) => {
+    return { params: { slug: slug.replace(/\.en/, '') } };
   });
-  const pathsAm = await getDataFromFolders('blog', 'am').map(({ slug }) => {
-    return { params: { slug } };
-  });
+
   return {
-    paths: [...pathsEn, ...pathsAm],
+    paths,
     fallback: false,
   };
 }
@@ -47,8 +44,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, locale }) {
   const { slug } = params;
 
-  const { meta, content } = getDocBySlug(blogPath(), slug, locale);
-  const mdxContent = serialize(content);
+  const { meta, content } = getDocBySlug('blog', slug, locale);
+  const mdxContent = await serialize(content);
   return {
     props: { meta, content: mdxContent },
   };
