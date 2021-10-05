@@ -9,7 +9,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import Image from 'next/image';
 import Head from 'next/head';
-import getDocBySlug from '../src/services/getDocBySlug.mjs';
+import getDocBySlug from '../src/services/getDataFromFolders.mjs';
 
 export default function Team({ meta, content }) {
   return (
@@ -30,7 +30,9 @@ export default function Team({ meta, content }) {
 }
 export async function getStaticProps() {
   const { meta, content, slug } = getDocBySlug('team');
-  console.log(meta, content);
+
   const mdxSource = await serialize(content);
+  console.log(mdxSource);
+  console.log(meta);
   return { props: { meta, content: mdxSource } };
 }

@@ -4,13 +4,13 @@ import BlogComponent from '../src/components/blog/BlogComponent';
 import Footer from '../src/components/sections/Footer';
 import Header from '../src/components/sections/Header';
 import Wrapper from '../src/components/wrappers/Wrapper';
-import getDocBySlug from '../src/services/getDocBySlug.mjs';
 import Image from 'next/image';
 import { serialize } from 'next-mdx-remote/serialize';
 import Head from 'next/head';
 import MarkdownWrapper from '../src/components/wrappers/MarkdownWrapper';
+import { getDataFromFolders } from '../src/services/getDataFromFolders.mjs';
 
-export default function Blog({ content, meta }) {
+export default function Blog() {
   const components = {
     Image,
   };
@@ -18,7 +18,7 @@ export default function Blog({ content, meta }) {
   return (
     <div>
       <Head>
-        <title>{meta.title}</title>
+        <title>Blog page</title>
       </Head>
       <Header />
       <Wrapper>
@@ -32,13 +32,20 @@ export default function Blog({ content, meta }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
-  const { content, meta } = getDocBySlug('blog', locale);
-  const mdxSource = await serialize(content);
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: '' }, // See the "paths" section below
+    ],
+    fallback: false,
+  };
+}
+
+export async function getStaticProps() {
   return {
     props: {
       content: mdxSource,
-      meta,
+      meta,               
     },
   };
 }

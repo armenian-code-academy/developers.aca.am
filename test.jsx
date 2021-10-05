@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
-import getDocBySlug from '../src/services/getDocBySlug.mjs';
+
 import Image from 'next/image';
 import { serialize } from 'next-mdx-remote/serialize';
 

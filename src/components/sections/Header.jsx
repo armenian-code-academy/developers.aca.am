@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header>
       <div className="md:mr-20 mt-5">
-        <div className="flex flex-row items-center justify-center md:justify-end gap-1">
+        <div className="mb-5 flex flex-row items-center justify-center md:justify-end gap-1">
           {locales.map((localeItem, index, arr) => {
             return (
               <div key={localeItem}>
