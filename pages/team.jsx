@@ -9,7 +9,6 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
 import Image from 'next/image';
 import Head from 'next/head';
-import getDocBySlug from '../src/services/getDataFromFolders.mjs';
 
 export default function Team({ meta, content }) {
   return (
