@@ -14,10 +14,11 @@ export default function TeamComponent({ reverse, content }) {
     <div className={componentStyle}>
       <div className="w-full sm:w-1/2 md:w-1/3 md:mx-5">
         <div className="flex flex-col items-start justify-center">
-          <div className="relative w-full h-48">
+          <div className="relative w-full h-96">
             <Image
               src={require(`../../../public/${content?.image}`)}
               layout="fill"
+              objectPosition="left top"
               objectFit="cover"
               alt="head"
             />

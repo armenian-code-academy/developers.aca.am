@@ -5,15 +5,12 @@ import {
   teamPath,
   openSourcePath,
   blogPath,
-  blogPagePath,
   careersPath,
-  careersPagePath,
 } from '../../constants/router.constants';
 import NavbarBrand from './navbar/NavbarBrand';
 import NavbarToggler from './navbar/NavbarToggler';
 import NavbarLink from './navbar/NavbarLink';
 import { useRouter } from 'next/dist/client/router';
-import Link from 'next/link';
 
 export default function Header() {
   const [show, setShow] = useState(true);
@@ -29,7 +26,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="md:mr-20 mt-5">
+      <div className="md:mr-10 mt-5">
         <div className="mb-5 flex flex-row items-center justify-center md:justify-end gap-1">
           {locales.map((localeItem, index, arr) => {
             return (
@@ -49,7 +46,9 @@ export default function Header() {
       <nav className="bg-white shadow">
         <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
-            <NavbarBrand brandPath={homePath()} brandContent="Brand" />
+            <NavbarBrand brandPath={homePath()}>
+              <span>{`{aca}`}</span>
+            </NavbarBrand>
             <NavbarToggler handleClick={handleClick} />
           </div>
           <div className={navbarStyle}>
@@ -70,19 +69,9 @@ export default function Header() {
                 linkContent="Blog"
               />
               <NavbarLink
-                active={pathname === blogPagePath() ? true : false}
-                linkPath={blogPagePath()}
-                linkContent="Blog page"
-              />
-              <NavbarLink
                 active={pathname === careersPath() ? true : false}
                 linkPath={careersPath()}
                 linkContent="Careers"
-              />
-              <NavbarLink
-                active={pathname === careersPagePath() ? true : false}
-                linkPath={careersPagePath()}
-                linkContent="Careers page"
               />
             </div>
           </div>
