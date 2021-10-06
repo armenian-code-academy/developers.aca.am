@@ -20,14 +20,14 @@ export default function Header() {
   const { locales, asPath, pathname, locale } = useRouter();
 
   const navbarStyle = classNames({
-    'md:flex items-center justify-center': true,
+    'md:flex items-center justify-center mt-5 md:mt-0': true,
     hidden: show,
   });
 
   return (
     <header>
       <div className="md:mr-10 mt-5">
-        <div className="mb-5 flex flex-row items-center justify-center md:justify-end gap-1">
+        <div className="mb-3 flex flex-row items-center justify-end gap-1 mr-6">
           {locales.map((localeItem, index, arr) => {
             return (
               <div key={localeItem}>

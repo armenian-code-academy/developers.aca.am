@@ -11,8 +11,8 @@ export default function Home() {
       <Head>
         <title>ACA Developers</title>
       </Head>
+      <Header />
       <Wrapper>
-        <Header />
         <TopSection
           header="Lorem ipsum"
           content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius,

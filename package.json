@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:prod": "npx vercel --prod",
+    "deploy:dev": "npx vercel"
   },
   "dependencies": {
     "classnames": "^2.3.1",

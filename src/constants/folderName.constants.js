@@ -1,3 +1,3 @@
-export const mdxContentFolder = () => `/src/content`;
-export const teamFolder = () => 'team';
-export const blogFolder = () => 'blog';
+export const getMdxContentFolderName = () => `/content`;
+export const getTeamFolderName = () => 'team';
+export const getBlogFolderName = () => 'blog';

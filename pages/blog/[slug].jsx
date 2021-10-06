@@ -6,7 +6,7 @@ import Image from 'next/image';
 import MarkDownWrapper from '../../src/components/wrappers/MarkdownWrapper';
 import { MDXRemote } from 'next-mdx-remote';
 import Header from '../../src/components/sections/Header';
-import { blogFolder } from '../../src/constants/folderName.constants';
+import { getBlogFolderName } from '../../src/constants/folderName.constants';
 import Wrapper from '../../src/components/wrappers/Wrapper';
 import Footer from '../../src/components/sections/Footer';
 
@@ -16,27 +16,29 @@ export default function BlogPost({ meta, content }) {
       <div>
         <Header />
         <Wrapper>
-          <div className="w-full flex flex-col items-center justify-center">
-            <div className="w-full">
+          <div className="border-b-2 border-gray-200 w-full flex flex-col items-center justify-center mt-5 pb-5">
+            <main>
               <div>
-                <h2>{meta.title}</h2>
-                <p>{meta.description}</p>
+                <div className="w-full flex flex-col items-center justify-center my-3">
+                  <h2 className="mb-2 text-2xl">{meta.title}</h2>
+                  <p>{meta.description}</p>
+                </div>
+                <div>
+                  <Image
+                    src={require(`/public/${meta.image}`)}
+                    alt={meta.description}
+                    objectFit="cover"
+                    width={600}
+                    height={600}
+                  />
+                </div>
+                <div></div>
               </div>
-              <div className=" h-96 relative">
-                <Image
-                  src={require(`/public/${meta.image}`)}
-                  alt={meta.description}
-                  objectFit="contain"
-                  layout="fill"
-                />
-              </div>
-              <div>
-                <MarkDownWrapper>
-                  <MDXRemote {...content} />
-                </MarkDownWrapper>
-              </div>
-            </div>
+            </main>
           </div>
+          <MarkDownWrapper>
+            <MDXRemote {...content} />
+          </MarkDownWrapper>
         </Wrapper>
       </div>
       <Footer />
@@ -45,19 +47,27 @@ export default function BlogPost({ meta, content }) {
 }
 
 export async function getStaticPaths() {
-  const paths = await getDataFromFolders('blog').map(({ slug }) => {
-    return { params: { slug: slug.replace(/\.en/, '') } };
-  });
+  const pathsEn = await getDataFromFolders(getBlogFolderName()).map(
+    ({ slug }) => {
+      return { params: { slug: slug.replace(/\.en/, '') }, locale: 'en' };
+    }
+  );
+  const pathsAm = await getDataFromFolders(getBlogFolderName()).map(
+    ({ slug }) => {
+      return { params: { slug: slug.replace(/\.en/, '') }, locale: 'am' };
+    }
+  );
+
   return {
-    paths,
+    paths: [...pathsEn, ...pathsAm],
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params, locale }) {
   const { slug } = params;
-  console.log(locale, 'locale');
-  const { meta, content } = getDocBySlug(blogFolder(), slug, locale);
+
+  const { meta, content } = getDocBySlug(getBlogFolderName(), slug, locale);
   const mdxContent = await serialize(content);
   return {
     props: { meta, content: mdxContent },

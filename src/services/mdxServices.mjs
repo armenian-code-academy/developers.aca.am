@@ -1,11 +1,13 @@
 import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
-import { mdxContentFolder } from '../constants/folderName.constants';
+import { getMdxContentFolderName } from '../constants/folderName.constants';
 
 export function getPostsFolders(typeOfContent = 'blog', locale = 'en') {
   return fs
-    .readdirSync(path.join(process.cwd(), mdxContentFolder(), typeOfContent))
+    .readdirSync(
+      path.join(process.cwd(), getMdxContentFolderName(), typeOfContent)
+    )
     .map((folderName) => ({
       directory: folderName,
       filename: `${folderName}.${locale}.mdx`,
@@ -19,13 +21,14 @@ export function getDataFromFolders(mainFolder, locale) {
     const source = fs.readFileSync(
       path.join(
         process.cwd(),
-        mdxContentFolder(),
+        getMdxContentFolderName(),
         mainFolder,
         directory,
         filename
       ),
       'utf8'
     );
+    console.log(source, 'source');
     const { data } = matter(source);
 
     return [
@@ -39,7 +42,7 @@ export function getDataFromFolders(mainFolder, locale) {
 }
 
 export function getDocBySlug(typeOfContent, slug, locale = 'en') {
-  const docsDirectory = path.join(process.cwd(), mdxContentFolder());
+  const docsDirectory = path.join(process.cwd(), getMdxContentFolderName());
   const realSlug = slug.replace(/\.mdx$/, '');
   const fullPath = path.join(
     docsDirectory,

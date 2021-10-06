@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 export default function PostComponent() {
   return (
-    <div>
+    <div className="my-8" k>
       <div className="relative w-full h-48">
         <Image
           alt="content"
