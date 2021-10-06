@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 
-export default function BlogComponent({ meta, sourcePath }) {
+export default function BlogItem({ meta, sourcePath }) {
   const { locale } = useRouter();
 
   return (
-    <div className="border-b shadow p-5">
+    <div className="border-b shadow p-5 hover:shadow-none hover:border-primary hover:border hover:border-2 duration-100">
       <Link href={`/blog/${sourcePath}`} locale={locale} passHref>
         <a>
           <div>

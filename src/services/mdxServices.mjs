@@ -28,7 +28,6 @@ export function getDataFromFolders(mainFolder, locale) {
       ),
       'utf8'
     );
-    console.log(source, 'source');
     const { data } = matter(source);
 
     return [

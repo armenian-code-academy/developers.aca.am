@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { getDataFromFolders } from '../../src/services/mdxServices.mjs';
 import { getBlogFolderName } from '../../src/constants/folderName.constants';
 import BlogList from '../../src/components/blog/BlogList';
+import BlogHeader from '../../src/components/blog/BlogHeader';
 
 export default function Blog({ blogList }) {
   return (
@@ -15,6 +16,7 @@ export default function Blog({ blogList }) {
       </Head>
       <Header />
       <Wrapper>
+        <BlogHeader header="Some blog header" />
         <BlogList blogList={blogList} />
         <Footer />
       </Wrapper>

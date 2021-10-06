@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="flex items-start justify-center">
           <p role="presentation">
             <span className="text-textLight">
-              © 2016 – 2021 Armenian Code Academy&apos;s Software Engineering
-              sTeam.
+              © 2016 – 2021 Armenian Code Academy&apos;s{' '}
+              <b> Software Engineering Team.</b>
             </span>
           </p>
         </div>

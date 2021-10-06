@@ -11,6 +11,7 @@ import NavbarBrand from './navbar/NavbarBrand';
 import NavbarToggler from './navbar/NavbarToggler';
 import NavbarLink from './navbar/NavbarLink';
 import { useRouter } from 'next/dist/client/router';
+import Image from 'next/image';
 
 export default function Header() {
   const [show, setShow] = useState(true);
@@ -47,7 +48,12 @@ export default function Header() {
         <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
           <div className="flex items-center justify-between">
             <NavbarBrand brandPath={homePath()}>
-              <span>{`{aca}`}</span>
+              <Image
+                src={require('/public/images/logo.svg')}
+                alt="Brand"
+                width={68}
+                height={28}
+              />
             </NavbarBrand>
             <NavbarToggler handleClick={handleClick} />
           </div>
