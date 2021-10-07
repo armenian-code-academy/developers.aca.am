@@ -2,27 +2,28 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Project() {
+export default function Project({ projectData }) {
+  const { title, description, imagePath, linkUrl } = projectData;
   return (
-    <div>
-      <Link href="#" passHref>
+    <div className="shadow py-5 hover:shadow-none hover:border-primary duration-100 border-b ">
+      <Link href={linkUrl} passHref>
         <a>
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-start justify-center">
             <div className="mr-4">
-              <div className="relative w-20 h-20">
+              <div>
                 <Image
-                  src={require('/public/images/logo.png')}
-                  alt="Logo"
-                  layout="fill"
+                  src={require(`/public/${imagePath}`)}
+                  alt={title}
+                  width={60}
+                  height={60}
+                  objectFit="cover"
                 />
               </div>
             </div>
-
             <div className="w-2/3">
               <div>
                 <p className="text-textPrimary">
-                  <b>Product name</b> ipsum dolor sit amet consectetur,
-                  adipisicing elit. Consequuntur, odio!
+                  <b>{title}</b> {description}
                 </p>
               </div>
             </div>

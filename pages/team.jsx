@@ -3,8 +3,8 @@ import Head from 'next/head';
 import { getDataFromFolders } from '../src/services/mdx.mjs';
 import Footer from '../src/components/sections/Footer';
 import Header from '../src/components/sections/Header';
-import TopSection from '../src/components/sections/TopSection';
-import BottomSection from '../src/components/teams/BottomSection';
+import PrimaryDescription from '../src/components/sections/PrimaryDescription';
+import SecondaryDescription from '../src/components/teams/SecondaryDescription';
 import TeamList from '../src/components/teams/TeamList';
 import Wrapper from '../src/components/wrappers/Wrapper';
 import { folderNames } from '../src/constants/folderName.constants';
@@ -19,9 +19,9 @@ export default function Team({ teamList }) {
       <Locales />
       <Header />
       <Wrapper>
-        <TopSection header="Team header" content="some description" />
+        <PrimaryDescription header="Team header" content="some description" />
         <TeamList teamList={teamList} />
-        <BottomSection />
+        <SecondaryDescription />
         <Footer />
       </Wrapper>
     </div>

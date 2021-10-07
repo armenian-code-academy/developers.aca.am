@@ -1,4 +1,4 @@
-import TopSection from '../src/components/sections/TopSection';
+import TopSection from '../src/components/sections/PrimaryDescription';
 import PostHeader from '../src/components/posts/PostHeader';
 import PostList from '../src/components/posts/PostList';
 import Footer from '../src/components/sections/Footer';

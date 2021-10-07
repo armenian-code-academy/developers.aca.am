@@ -1,19 +1,20 @@
+import Image from 'next/image';
+import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import React from 'react';
 import { getDocBySlug } from '../../src/services/mdx.mjs';
 import { getDataFromFolders } from '../../src/services/mdx.mjs';
-import Image from 'next/image';
-import MarkDownWrapper from '../../src/components/wrappers/MarkdownWrapper';
-import { MDXRemote } from 'next-mdx-remote';
+import { folderNames } from '../../src/constants/folderName.constants';
 import Header from '../../src/components/sections/Header';
+import MarkDownWrapper from '../../src/components/wrappers/MarkdownWrapper';
 import Wrapper from '../../src/components/wrappers/Wrapper';
 import Footer from '../../src/components/sections/Footer';
-import { folderNames } from '../../src/constants/folderName.constants';
+import Locales from '../../src/components/sections/Locales';
 
 export default function BlogPost({ meta, content }) {
   return (
     <>
       <div>
+        <Locales />
         <Header />
         <Wrapper>
           <div className="border-b-2 border-gray-200 w-full flex flex-col items-center justify-center mt-5 pb-5">

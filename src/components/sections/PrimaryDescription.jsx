@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function TopSection({ header, content }) {
+export default function PrimaryDescription({ header, content }) {
   return (
     <main>
       <div className="mt-8">
