@@ -5,12 +5,15 @@ import Footer from '../src/components/sections/Footer';
 import Header from '../src/components/sections/Header';
 import Wrapper from '../src/components/wrappers/Wrapper';
 import Head from 'next/head';
+import Locales from '../src/components/sections/Locales';
+
 export default function Home() {
   return (
     <div>
       <Head>
         <title>ACA Products</title>
       </Head>
+      <Locales />
       <Header />
       <Wrapper>
         <TopSection

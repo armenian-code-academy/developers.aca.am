@@ -1,3 +1,5 @@
-export const getMdxContentFolderName = () => `/content`;
-export const getTeamFolderName = () => 'team';
-export const getBlogFolderName = () => 'blog';
+export const folderNames = {
+  getMdxContentFolderName: () => `/content`,
+  getTeamFolderName: () => 'team',
+  getBlogFolderName: () => 'blog',
+};

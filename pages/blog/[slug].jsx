@@ -1,14 +1,14 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import React from 'react';
-import { getDocBySlug } from '../../src/services/mdxServices.mjs';
-import { getDataFromFolders } from '../../src/services/mdxServices.mjs';
+import { getDocBySlug } from '../../src/services/mdx.mjs';
+import { getDataFromFolders } from '../../src/services/mdx.mjs';
 import Image from 'next/image';
 import MarkDownWrapper from '../../src/components/wrappers/MarkdownWrapper';
 import { MDXRemote } from 'next-mdx-remote';
 import Header from '../../src/components/sections/Header';
-import { getBlogFolderName } from '../../src/constants/folderName.constants';
 import Wrapper from '../../src/components/wrappers/Wrapper';
 import Footer from '../../src/components/sections/Footer';
+import { folderNames } from '../../src/constants/folderName.constants';
 
 export default function BlogPost({ meta, content }) {
   return (
@@ -47,12 +47,12 @@ export default function BlogPost({ meta, content }) {
 }
 
 export async function getStaticPaths() {
-  const pathsEn = await getDataFromFolders(getBlogFolderName()).map(
+  const pathsEn = await getDataFromFolders(folderNames.getBlogFolderName()).map(
     ({ slug }) => {
       return { params: { slug: slug.replace(/\.en/, '') }, locale: 'en' };
     }
   );
-  const pathsAm = await getDataFromFolders(getBlogFolderName()).map(
+  const pathsAm = await getDataFromFolders(folderNames.getBlogFolderName()).map(
     ({ slug }) => {
       return { params: { slug: slug.replace(/\.en/, '') }, locale: 'am' };
     }
@@ -67,7 +67,11 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, locale }) {
   const { slug } = params;
 
-  const { meta, content } = getDocBySlug(getBlogFolderName(), slug, locale);
+  const { meta, content } = getDocBySlug(
+    folderNames.getBlogFolderName(),
+    slug,
+    locale
+  );
   const mdxContent = await serialize(content);
   return {
     props: { meta, content: mdxContent },

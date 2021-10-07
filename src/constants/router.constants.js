@@ -1,9 +1,10 @@
 const separator = () => '/';
-export const homePath = () => `${separator()}`;
-export const teamPath = () => `${separator()}team`;
-export const openSourcePath = () => `${separator()}open-source`;
-export const blogPath = (slug = '') =>
-  `${separator()}blog${slug === '' ? '' : separator()}${slug}`;
-export const blogPagePath = () => `${separator()}blog-page`;
-export const careersPath = () => `${separator()}careers`;
-export const careersPagePath = () => `${separator()}careers-page`;
+
+export const paths = {
+  homePath: () => `${separator()}`,
+  teamPath: () => `${separator()}team`,
+  openSourcePath: () => `${separator()}open-source`,
+  blogPath: (slug = '') =>
+    `${separator()}blog${slug === '' ? '' : separator()}${slug}`,
+  careersPath: () => `${separator()}careers`,
+};
