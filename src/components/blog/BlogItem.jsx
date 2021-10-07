@@ -8,11 +8,15 @@ export default function BlogItem({ meta, sourcePath }) {
 
   return (
     <div className="border-b shadow p-5 hover:shadow-none hover:border-primary hover:border hover:border-2 duration-100">
-      <Link href={`/blog/${sourcePath}`} locale={locale} passHref>
+      <Link href={meta.linkUrl} locale={locale} passHref>
         <a>
           <div>
-            <h3 className="text-xl mb-8 text-textLight">{meta.title}</h3>
-            <p className="text-xs my-2">{meta.description}</p>
+            <h3 className="text-xl mb-8 text-textLight hover:text-primary">
+              {meta.title}
+            </h3>
+            <p className="text-xs my-2 hover:text-primary">
+              {meta.description}
+            </p>
           </div>
           <div className="w-full h-48 relative">
             <Image

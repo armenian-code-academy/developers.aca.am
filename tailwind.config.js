@@ -20,6 +20,7 @@ module.exports = {
       textColor: ['active'],
       backgroundColor: ['hover', 'focus'],
       borderColor: ['focus', 'hover'],
+      filter: ['hover', 'focus'],
     },
   },
   plugins: [],

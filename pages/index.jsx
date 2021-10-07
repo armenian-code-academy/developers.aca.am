@@ -1,11 +1,11 @@
-import TopSection from '../src/components/sections/PrimaryDescription';
+import Head from 'next/head';
 import PostHeader from '../src/components/posts/PostHeader';
 import PostList from '../src/components/posts/PostList';
 import Footer from '../src/components/sections/Footer';
 import Header from '../src/components/sections/Header';
 import Wrapper from '../src/components/wrappers/Wrapper';
-import Head from 'next/head';
 import Locales from '../src/components/sections/Locales';
+import PrimaryDescription from '../src/components/sections/PrimaryDescription';
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Locales />
       <Header />
       <Wrapper>
-        <TopSection
+        <PrimaryDescription
           header="Lorem ipsum"
           content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius,
           aliquid."
