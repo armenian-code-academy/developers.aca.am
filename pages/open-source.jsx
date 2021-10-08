@@ -1,4 +1,6 @@
 import React from 'react';
+import Head from 'next/head';
+import { getDataFromFolders } from '../src/services/mdx.mjs';
 import ProjectHead from '../src/components/project/ProjectHead';
 import ProjectList from '../src/components/project/ProjectList';
 import Footer from '../src/components/sections/Footer';
@@ -6,11 +8,13 @@ import Header from '../src/components/sections/Header';
 import Locales from '../src/components/sections/Locales';
 import Wrapper from '../src/components/wrappers/Wrapper';
 import { folderNames } from '../src/constants/folderName.constants';
-import { getDataFromFolders } from '../src/services/mdx.mjs';
 
 export default function OpenSource({ projectList }) {
   return (
     <div>
+      <Head>
+        <title>ACA Open-Source</title>
+      </Head>
       <Locales />
       <Header />
       <Wrapper>
@@ -27,6 +31,7 @@ export async function getStaticProps({ locale }) {
     folderNames.getProjectFolderName(),
     locale
   );
+
   return {
     props: {
       projectList,
