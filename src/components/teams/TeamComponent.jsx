@@ -21,6 +21,8 @@ export default function TeamComponent({ reverse, content }) {
               objectPosition="left top"
               objectFit="cover"
               alt="head"
+              placeholder="blur"
+              blurDataURL={require(`../../../public/${content?.image}`)}
             />
           </div>
           <div className="my-2">

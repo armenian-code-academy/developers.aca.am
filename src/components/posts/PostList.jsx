@@ -1,7 +1,6 @@
 import React from 'react';
 import PostComponent from './PostComponent';
 
-
 export default function PostList({ postListData }) {
   return (
     <div className="mt-6 mb-8">

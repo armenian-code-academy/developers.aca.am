@@ -1,5 +1,6 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
+import { animate, motion } from 'framer-motion';
 import { folderNames } from '../../src/constants/folderName.constants';
 import { getDataFromFolders } from '../../src/services/mdx.mjs';
 import Footer from '../../src/components/sections/Footer';
@@ -11,7 +12,7 @@ import Locales from '../../src/components/sections/Locales';
 
 export default function Blog({ blogList }) {
   return (
-    <div>
+    <>
       <NextSeo
         title="Blog | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/careers"
@@ -48,12 +49,22 @@ export default function Blog({ blogList }) {
       />
       <Locales />
       <Header />
-      <Wrapper>
-        <BlogHeader header="Articles from Software Engineering Team" />
-        <BlogList blogList={blogList} />
-        <Footer />
-      </Wrapper>
-    </div>
+      <motion.div
+        initial={{ x: -60, opacity: 0.3 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: 'tween', stiffness: 100 },
+          default: { duration: 0.6 },
+        }}
+      >
+        <Wrapper>
+          <BlogHeader header="Articles from Software Engineering Team" />
+          <BlogList blogList={blogList} />
+          <Footer />
+        </Wrapper>
+      </motion.div>
+    </>
   );
 }
 

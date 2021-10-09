@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+
 export default function PostComponent() {
   return (
     <div className="my-8" k>

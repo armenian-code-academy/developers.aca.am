@@ -16,6 +16,9 @@ export default function PostHeader() {
           layout="fill"
           objectFit="cover"
           objectPosition="0"
+          placeholder="blur"
+          blurDataURL={require('/public/images/screenSaver.jpg')}
+          loading="eager"
         />
       </div>
     </div>

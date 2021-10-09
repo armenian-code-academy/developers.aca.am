@@ -24,6 +24,9 @@ export default function BlogItem({ meta, sourcePath }) {
               alt={meta.description}
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
+              blurDataURL={require(`../../../public/${meta.image}`)}
+              loading="eager"
             />
           </div>
         </a>

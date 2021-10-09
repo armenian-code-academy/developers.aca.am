@@ -1,5 +1,6 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 import { getDataFromFolders } from '../src/services/mdx.mjs';
 import Footer from '../src/components/sections/Footer';
 import Header from '../src/components/sections/Header';
@@ -12,7 +13,7 @@ import Locales from '../src/components/sections/Locales';
 
 export default function Team({ teamList }) {
   return (
-    <div>
+    <>
       <NextSeo
         title="Open-Source | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/careers"
@@ -49,13 +50,23 @@ export default function Team({ teamList }) {
       />
       <Locales />
       <Header />
-      <Wrapper>
-        <PrimaryDescription header="Team header" content="some description" />
-        <TeamList teamList={teamList} />
-        <SecondaryDescription />
-        <Footer />
-      </Wrapper>
-    </div>
+      <motion.div
+        initial={{ x: -60, opacity: 0.3 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: 'tween', stiffness: 100 },
+          default: { duration: 0.6 },
+        }}
+      >
+        <Wrapper>
+          <PrimaryDescription header="Team header" content="some description" />
+          <TeamList teamList={teamList} />
+          <SecondaryDescription />
+          <Footer />
+        </Wrapper>
+      </motion.div>
+    </>
   );
 }
 

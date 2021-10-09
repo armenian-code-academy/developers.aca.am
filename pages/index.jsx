@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { NextSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 import PostHeader from '../src/components/posts/PostHeader';
 import PostList from '../src/components/posts/PostList';
 import Footer from '../src/components/sections/Footer';
@@ -6,11 +8,10 @@ import Header from '../src/components/sections/Header';
 import Wrapper from '../src/components/wrappers/Wrapper';
 import Locales from '../src/components/sections/Locales';
 import PrimaryDescription from '../src/components/sections/PrimaryDescription';
-import { NextSeo } from 'next-seo';
 
 export default function Home() {
   return (
-    <div>
+    <>
       <NextSeo
         title="Home | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/"
@@ -47,16 +48,26 @@ export default function Home() {
       />
       <Locales />
       <Header />
-      <Wrapper>
-        <PrimaryDescription
-          header="Lorem ipsum"
-          content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius,
+      <motion.div
+        initial={{ y: -60, opacity: 0.3 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: 'tween', stiffness: 100 },
+          default: { duration: 0.6 },
+        }}
+      >
+        <Wrapper>
+          <PrimaryDescription
+            header="Lorem ipsum"
+            content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius,
           aliquid."
-        />
-        <PostHeader />
-        <PostList />
-        <Footer />
-      </Wrapper>
-    </div>
+          />
+          <PostHeader />
+          <PostList />
+          <Footer />
+        </Wrapper>
+      </motion.div>
+    </>
   );
 }

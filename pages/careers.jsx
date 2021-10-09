@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 import { getDataFromFolders } from '../src/services/mdx.mjs';
 import { folderNames } from '../src/constants/folderName.constants';
 import Footer from '../src/components/sections/Footer';
@@ -10,7 +11,7 @@ import ProjectList from '../src/components/project/ProjectList';
 
 export default function Careers({ careersList }) {
   return (
-    <div>
+    <>
       <NextSeo
         title="Careers | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/careers"
@@ -47,12 +48,22 @@ export default function Careers({ careersList }) {
       />
       <Locales />
       <Header />
-      <Wrapper>
-        <ProjectHead />
-        <ProjectList projectList={careersList} />
-        <Footer />
-      </Wrapper>
-    </div>
+      <motion.div
+        initial={{ y: -60, opacity: 0.3 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: 'tween', stiffness: 100 },
+          default: { duration: 0.6 },
+        }}
+      >
+        <Wrapper>
+          <ProjectHead />
+          <ProjectList projectList={careersList} />
+          <Footer />
+        </Wrapper>
+      </motion.div>
+    </>
   );
 }
 

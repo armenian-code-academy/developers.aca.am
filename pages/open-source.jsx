@@ -1,5 +1,6 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 import { getDataFromFolders } from '../src/services/mdx.mjs';
 import ProjectHead from '../src/components/project/ProjectHead';
 import ProjectList from '../src/components/project/ProjectList';
@@ -11,7 +12,7 @@ import { folderNames } from '../src/constants/folderName.constants';
 
 export default function OpenSource({ projectList }) {
   return (
-    <div>
+    <>
       <NextSeo
         title="Open-Source | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/careers"
@@ -26,11 +27,11 @@ export default function OpenSource({ projectList }) {
           ],
         }}
         robotsProps={{
-          nosnippet: false, // show a text snippet in the search results for page
-          notranslate: false, // offer translation of page in search results
-          noimageindex: true, // do not index images on this page
-          noarchive: false, // show a cached link if the website is slow or not responding
-          maxSnippet: -1, // Google will choose the snippet length automatically
+          nosnippet: false,
+          notranslate: false,
+          noimageindex: true,
+          noarchive: false,
+          maxSnippet: -1,
         }}
         nofollow={false}
         noindex={false}
@@ -48,12 +49,22 @@ export default function OpenSource({ projectList }) {
       />
       <Locales />
       <Header />
-      <Wrapper>
-        <ProjectHead />
-        <ProjectList projectList={projectList} />
-        <Footer />
-      </Wrapper>
-    </div>
+      <motion.div
+        initial={{ y: -60, opacity: 0.3 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: 'tween', stiffness: 100 },
+          default: { duration: 0.6 },
+        }}
+      >
+        <Wrapper>
+          <ProjectHead />
+          <ProjectList projectList={projectList} />
+          <Footer />
+        </Wrapper>
+      </motion.div>
+    </>
   );
 }
 
