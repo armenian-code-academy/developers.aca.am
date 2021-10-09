@@ -3,4 +3,5 @@ export const folderNames = {
   getTeamFolderName: () => 'team',
   getBlogFolderName: () => 'blog',
   getProjectFolderName: () => 'projects',
+  getCareersFolderName: () => 'careers',
 };

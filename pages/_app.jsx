@@ -6,7 +6,10 @@ import SEO from '../next-seo.config';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    console.log('%c {code} Software Team', 'color: #fff; font-size: 48px; ');
+    console.log(
+      '%c {code} Software Creative Team',
+      'color: #fff; font-size: 48px; '
+    );
   }, []);
 
   return (
