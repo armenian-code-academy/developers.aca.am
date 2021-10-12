@@ -1,13 +1,13 @@
-import { NextSeo } from 'next-seo';
-import { motion } from 'framer-motion';
-import { getDataFromFolders } from '../src/services/mdx.mjs';
-import { folderNames } from '../src/constants/folderName.constants';
-import Footer from '../src/components/sections/Footer';
-import Header from '../src/components/sections/Header';
-import Wrapper from '../src/components/wrappers/Wrapper';
-import Locales from '../src/components/sections/Locales';
-import ProjectHead from '../src/components/project/ProjectHead';
-import ProjectList from '../src/components/project/ProjectList';
+import { NextSeo } from "next-seo";
+import { motion } from "framer-motion";
+import { getDataFromFolders } from "../src/services/mdx.mjs";
+import { folderNames } from "../src/constants/folderName.constants";
+import Footer from "../src/components/sections/Footer";
+import Header from "../src/components/sections/Header";
+import Wrapper from "../src/components/wrappers/Wrapper";
+import Locales from "../src/components/sections/Locales";
+import ProjectHead from "../src/components/project/ProjectHead";
+import ProjectList from "../src/components/project/ProjectList";
 
 export default function Careers({ careersList }) {
   return (
@@ -16,12 +16,12 @@ export default function Careers({ careersList }) {
         title="Careers | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/careers"
         openGraph={{
-          url: 'https://developers-aca-am.vercel.app/careers',
-          title: 'Careers | ACA Developers',
+          url: "https://developers-aca-am.vercel.app/careers",
+          title: "Careers | ACA Developers",
           images: [
             {
-              url: 'https://aca.am/static/images/seo/seo-image.png',
-              alt: 'Careers | ACA Developers',
+              url: "https://aca.am/static/images/seo/seo-image.png",
+              alt: "Careers | ACA Developers",
             },
           ],
         }}
@@ -36,24 +36,24 @@ export default function Careers({ careersList }) {
         noindex={false}
         additionalMetaTags={[
           {
-            name: 'application-name',
-            content: 'developers.aca.am',
+            name: "application-name",
+            content: "developers.aca.am",
           },
-          { property: 'dc:creator', content: 'ACA Software Engineering Team' },
+          { property: "dc:creator", content: "ACA Software Engineering Team" },
           {
-            httpEquiv: 'x-ua-compatible',
-            content: 'IE=edge; chrome=1',
+            httpEquiv: "x-ua-compatible",
+            content: "IE=edge; chrome=1",
           },
         ]}
       />
-      <Locales />
+
       <Header />
       <motion.div
         initial={{ y: -60, opacity: 0.3 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
           delay: 0.2,
-          x: { type: 'tween', stiffness: 100 },
+          x: { type: "tween", stiffness: 100 },
           default: { duration: 0.6 },
         }}
       >

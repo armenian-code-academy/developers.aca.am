@@ -1,13 +1,13 @@
-import Head from 'next/head';
-import { NextSeo } from 'next-seo';
-import { motion } from 'framer-motion';
-import PostHeader from '../src/components/posts/PostHeader';
-import PostList from '../src/components/posts/PostList';
-import Footer from '../src/components/sections/Footer';
-import Header from '../src/components/sections/Header';
-import Wrapper from '../src/components/wrappers/Wrapper';
-import Locales from '../src/components/sections/Locales';
-import PrimaryDescription from '../src/components/sections/PrimaryDescription';
+import Head from "next/head";
+import { NextSeo } from "next-seo";
+import { motion } from "framer-motion";
+import PostHeader from "../src/components/posts/PostHeader";
+import PostList from "../src/components/posts/PostList";
+import Footer from "../src/components/sections/Footer";
+import Header from "../src/components/sections/Header";
+import Wrapper from "../src/components/wrappers/Wrapper";
+import Locales from "../src/components/sections/Locales";
+import PrimaryDescription from "../src/components/sections/PrimaryDescription";
 
 export default function Home() {
   return (
@@ -16,12 +16,12 @@ export default function Home() {
         title="Home | ACA Developers"
         canonical="https://developers-aca-am.vercel.app/"
         openGraph={{
-          url: 'https://developers-aca-am.vercel.app',
-          title: 'Home | ACA Developers',
+          url: "https://developers-aca-am.vercel.app",
+          title: "Home | ACA Developers",
           images: [
             {
-              url: 'https://aca.am/static/images/seo/seo-image.png',
-              alt: 'Home | ACA Developers',
+              url: "https://aca.am/static/images/seo/seo-image.png",
+              alt: "Home | ACA Developers",
             },
           ],
         }}
@@ -36,24 +36,23 @@ export default function Home() {
         noindex={false}
         additionalMetaTags={[
           {
-            name: 'application-name',
-            content: 'developers.aca.am',
+            name: "application-name",
+            content: "developers.aca.am",
           },
-          { property: 'dc:creator', content: 'ACA Software Engineering Team' },
+          { property: "dc:creator", content: "ACA Software Engineering Team" },
           {
-            httpEquiv: 'x-ua-compatible',
-            content: 'IE=edge; chrome=1',
+            httpEquiv: "x-ua-compatible",
+            content: "IE=edge; chrome=1",
           },
         ]}
       />
-      <Locales />
       <Header />
       <motion.div
         initial={{ y: -60, opacity: 0.3 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
           delay: 0.2,
-          x: { type: 'tween', stiffness: 100 },
+          x: { type: "tween", stiffness: 100 },
           default: { duration: 0.6 },
         }}
       >

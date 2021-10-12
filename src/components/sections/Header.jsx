@@ -1,14 +1,16 @@
-import classNames from 'classnames';
-import React, { useState } from 'react';
-import { paths } from '../../constants/router.constants';
-import NavbarBrand from './navbar/NavbarBrand';
-import NavbarToggler from './navbar/NavbarToggler';
-import NavbarLink from './navbar/NavbarLink';
-import { useRouter } from 'next/dist/client/router';
-import Image from 'next/image';
+import classNames from "classnames";
+import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/dist/client/router";
+import { paths } from "../../constants/router.constants";
+import NavbarBrand from "./navbar/NavbarBrand";
+import NavbarToggler from "./navbar/NavbarToggler";
+import NavbarLink from "./navbar/NavbarLink";
+import { localeNames } from "../../constants/locales.constants";
 
 export default function Header() {
   const [show, setShow] = useState(true);
+  const { locales, asPath, locale } = useRouter();
 
   const handleClick = () => {
     setShow((prev) => !prev);
@@ -16,17 +18,17 @@ export default function Header() {
   const { pathname } = useRouter();
 
   const navbarStyle = classNames({
-    'md:flex items-center justify-center mt-5 md:mt-0': true,
+    "md:flex items-center justify-center mt-5 md:mt-0": true,
     hidden: show,
   });
 
   return (
     <nav className="bg-white shadow sticky top-0 z-10">
-      <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
+      <div className="container px-6 py-4 mx-auto md:flex md:items-center">
         <div className="flex items-center justify-between">
           <NavbarBrand brandPath={paths.homePath()}>
             <Image
-              src={require('/public/images/logo.svg')}
+              src={require("/public/images/logo.svg")}
               alt="Brand"
               width={68}
               height={28}
@@ -57,6 +59,21 @@ export default function Header() {
               linkContent="Careers"
             />
           </div>
+        </div>
+        <div className="flex ml-auto">
+          {locales.map((localeItem, index, arr) => {
+            return (
+              <div key={localeItem}>
+                <NavbarLink
+                  active={locale === localeItem ? true : false}
+                  locale={localeItem}
+                  linkPath={asPath}
+                  linkContent={localeNames[localeItem]}
+                />
+                {index === arr.length - 1 ? null : <span> / </span>}
+              </div>
+            );
+          })}
         </div>
       </div>
     </nav>
